@@ -1,0 +1,46 @@
+/* extra css */
+@import url("https://fonts.googleapis.com/css?family=Muli:300,400,700,900");
+
+body {
+  background: #3acfd9;
+  font-family: "Muli", sans-serif;
+  color: rgba(51, 51, 51, 1);
+}
+
+.box {
+  height: 100% !important;
+  border-radius: 50px;
+  background: linear-gradient(145deg, #34bac3, #3edde8);
+  box-shadow: 20px 20px 66px #31b0b8, -20px -20px 66px #43eefa;
+}
+.delete-icon {
+  border-radius: 50px;
+  background: linear-gradient(145deg, #34bac3, #3edde8);
+  box-shadow: 20px 20px 66px #31b0b8, -20px -20px 66px #43eefa;
+}
+
+.head {
+  height: 50%;
+  color: rgb(0, 0, 0);
+}
+
+.product-img {
+  width: 50%;
+  height: 50%;
+}
+
+button {
+  color: #090909;
+  padding: 0.7em 1.7em;
+  font-size: 18px;
+  border-radius: 0.5em;
+  background: #3acfd9;
+  border: 1px solid #3acfd9;
+  transition: all 0.3s;
+  box-shadow: 6px 6px 12px #31b0b8, -6px -6px 12px #43eefa;
+}
+
+button:active {
+  color: #666;
+  box-shadow: inset 4px 4px 12px #31b0b8, inset -4px -4px 12px #43eefa;
+}
