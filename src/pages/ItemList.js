@@ -19,6 +19,7 @@ function ItemList() {
   const [itemData, setItemData] = useState({});
   const [id, setId] = useState(30);
   const [itemError, setItemError] = useState();
+  const [image, setImage] = useState();
 
   const style = {
     position: "absolute",
@@ -45,7 +46,6 @@ function ItemList() {
     }));
   };
   const addItem = () => {
-    console.log(itemData?.images)
     if (handleAddItemFormValidation()) {
       let x = {
         id: id + 1,
@@ -54,7 +54,7 @@ function ItemList() {
         description: itemData?.description,
         price: itemData?.price,
         rating: String(itemData?.rating),
-        images: [itemData?.images],
+        images: [URL.createObjectURL(image)],
         thumbnail: "https://i.dummyjson.com/data/products/30/thumbnail.jpg",
         title: itemData?.title,
       };
@@ -64,6 +64,7 @@ function ItemList() {
         text: "Item Added",
         icon: "success",
       });
+      setItemData({});
       setaddItemOpen(false);
       setId(id + 1);
     }
@@ -157,7 +158,7 @@ function ItemList() {
                   className="product-img"
                   src={data.images[0]}
                   alt="product image"
-                ></img>
+                />
               </div>
               <p className="mt-4">{data.description}</p>
 
@@ -275,17 +276,17 @@ function ItemList() {
             <FormHelperText>*Rating should be in between 0-5</FormHelperText>
           </div>
           <div className="mt-2 d-flex flex-column">
-            <Button variant="contained" component="label">
-              Upload
-              <input
-                hidden
-                name="images"
-                accept="image/*"
-                onChange={handleChangeItemValue}
-                multiple
-                type="file"
-              />
-            </Button>
+            <input
+              type="file"
+              name="images"
+              accept="image/*"
+              onChange={(e) => {
+                if (e.target.files.length > 0) {
+                  let filename = e.target.files[0];
+                  setImage(filename);
+                }
+              }}
+            />
           </div>
           <div className="d-flex justify-content-end">
             <Button className="mt-4 mx-3" variant="primary" onClick={addItem}>
